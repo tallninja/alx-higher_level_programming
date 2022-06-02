@@ -15,7 +15,7 @@ if __name__ == '__main__':
     if op not in ops:
         print("Unknown operator. Available operators: +, -, * and / ")
         exit(1)
-     
+
     a = int(argv[1])
     b = int(argv[3])
     result = 0
@@ -28,6 +28,4 @@ if __name__ == '__main__':
         result = mul(a, b)
     elif op == "/":
         result = div(a, b)
-            
     print("{:d} {:s} {:d} = {}".format(a, op, b, result))
-
