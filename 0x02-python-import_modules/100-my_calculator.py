@@ -12,7 +12,7 @@ if __name__ == '__main__':
     op = str(argv[2])
     a = int(argv[1])
     b = int(argv[3])
-    result = 0
+    result = None
 
     if op == '+':
         result = add(a, b)
