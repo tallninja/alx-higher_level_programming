@@ -14,16 +14,16 @@ if __name__ == '__main__':
     b = int(argv[3])
     result = 0
 
-    if op is '+':
+    if op == '+':
         result = add(a, b)
-    elif op is '-':
+    elif op == '-':
         result = sub(a, b)
-    elif op is '*':
+    elif op == '*':
         result = mul(a, b)
-    elif op is '/':
+    elif op == '/':
         result = div(a, b)
     else:
         print("Unknown operator. Available operators: +, -, * and / ")
         exit(1)
 
-    print("{:d} {:s} {:d} = {}".format(a, op, b, result))
+    print("{:d} {:s} {:d} = {:d}".format(a, op, b, result))
