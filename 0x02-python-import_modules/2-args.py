@@ -2,18 +2,18 @@
 from sys import argv
 
 if __name__ == '__main__':
-    count = len(argv) - 1
+    argc = len(argv) - 1
     argmnt = "argument"
 
-    if count > 1:
+    if argc > 1:
         argmnt += "s"
 
-    if count == 0:
-        argmnt += "."
+    if argc == 0:
+        argmnt += "s."
     else:
         argmnt += ":"
 
-    print("{:d} {:s}".format(count, argmnt))
+    print("{:d} {:s}".format(argc, argmnt))
 
-    for i in range(1, count + 1):
+    for i in range(1, argc + 1):
         print("{:d}: {:s}".format(i, argv[i]))
