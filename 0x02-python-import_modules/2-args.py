@@ -15,5 +15,5 @@ if __name__ == '__main__':
 
     print("{:d} {:s}".format(count, argmnt))
 
-    for i in range(count):
-        print("{:d}: {:s}".format((i + 1), argv[i + 1]))
+    for i in range(1, count + 1):
+        print("{:d}: {:s}".format(i, argv[i]))
