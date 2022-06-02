@@ -5,11 +5,11 @@ if __name__ == '__main__':
     argc = len(argv) - 1
     argmnt = "argument"
 
-    if argc > 1:
+    if argc > 1 or argc == 0:
         argmnt += "s"
 
     if argc == 0:
-        argmnt += "s."
+        argmnt += "."
     else:
         argmnt += ":"
 
