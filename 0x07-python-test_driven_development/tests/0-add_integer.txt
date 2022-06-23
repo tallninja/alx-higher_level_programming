@@ -1,4 +1,7 @@
->>> add_integer = __import__('0-add-integer').add_integer
+>>> add_integer = __import__('0-add_integer').add_integer
+>>> add_integer(2)
+100
+
 >>> add_integer(2, 3)
 5
 
@@ -15,11 +18,11 @@
 5
 
 >>> add_integer("string", 3)
-Traceback (most recent call)
+Traceback (most recent call last):
 	...
 TypeError: a must be an integer
 
 >>> add_integer(2, "string")
-Traceback (most recent call)
+Traceback (most recent call last):
 	...
 TypeError: b must be an integer
