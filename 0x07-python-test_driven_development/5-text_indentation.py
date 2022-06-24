@@ -8,7 +8,7 @@ def text_indentation(text):
     if type(text) is not str:
         raise TypeError("text must be a string")
     string = ""
-    for char in text:
+    for char in text.strip():
         string += char
         if char in ".:?":
             string += "\n\n"
