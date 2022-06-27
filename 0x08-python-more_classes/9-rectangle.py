@@ -26,9 +26,10 @@ class Rectangle:
         """width setter"""
         if type(value) is not int:
             raise TypeError("width must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("width must be >= 0")
-        self.__width = value
+        else:
+            self.__width = value
 
     @property
     def height(self):
@@ -40,9 +41,10 @@ class Rectangle:
         """height setter"""
         if type(value) is not int:
             raise TypeError("height must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("height must be >= 0")
-        self.__height = value
+        else:
+            self.__height = value
 
     def area(self):
         """returns the rectangle area"""
@@ -81,7 +83,8 @@ class Rectangle:
             raise TypeError("rect_2 must be an instance of Rectangle")
         if rect_1.area() >= rect_2.area():
             return (rect_1)
-        return (rect_2)
+        else:
+            return (rect_2)
 
     @classmethod
     def square(cls, size=0):
