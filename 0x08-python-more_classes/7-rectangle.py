@@ -11,16 +11,19 @@ class Rectangle:
     print_symbol = "#"
 
     def __init__(self, width=0, height=0):
+        """constructor"""
         self.__height = height
         self.__width = width
         type(self).number_of_instances += 1
 
     @property
     def width(self):
+        """width getter"""
         return (self.__width)
 
     @width.setter
     def width(self, value):
+        """width setter"""
         if type(value) is not int:
             raise TypeError("width must be an integer")
         if value < 0:
@@ -29,10 +32,12 @@ class Rectangle:
 
     @property
     def height(self):
+        """height getter"""
         return (self.__height)
 
     @height.setter
     def height(self, value):
+        """hight setter"""
         if type(value) is not int:
             raise TypeError("height must be an integer")
         if value < 0:
@@ -45,9 +50,13 @@ class Rectangle:
 
     def perimeter(self):
         """returns the rectangle perimeter"""
+        if self.__width == 0 or self.__height == 0:
+            return (0)
         return (2 * (self.__width + self.__height))
 
     def __str__(self):
+        if self.__width == 0 or self.__height == 0:
+            return ("")
         str_rep = ""
         for i in range(self.__height):
             str_rep += (str(self.print_symbol) * self.__width)
@@ -59,5 +68,6 @@ class Rectangle:
         return (f"Rectangle({self.__width}, {self.__height})")
 
     def __del__(self):
+        """destructor"""
         print("Bye rectangle...")
         type(self).number_of_instances -= 1
