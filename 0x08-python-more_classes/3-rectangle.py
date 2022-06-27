@@ -8,6 +8,7 @@ class Rectangle defines a rectangle
 class Rectangle:
     """defines a rectangle"""
     def __init__(self, width=0, height=0):
+        """constructor"""
         self.height = height
         self.width = width
 
@@ -50,6 +51,7 @@ class Rectangle:
         return (2 * (self.__width + self.__height))
 
     def __str__(self):
+        """informal string representation of an object"""
         str_rep = ""
         for i in range(self.__height):
             str_rep += ("#" * self.__width)
