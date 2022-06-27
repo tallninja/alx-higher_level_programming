@@ -19,7 +19,7 @@ class Rectangle:
     @property
     def width(self):
         """width getter"""
-        return (self.__width)
+        return self.__width
 
     @width.setter
     def width(self, value):
@@ -34,7 +34,7 @@ class Rectangle:
     @property
     def height(self):
         """height getter"""
-        return (self.__height)
+        return self.__height
 
     @height.setter
     def height(self, value):
@@ -48,27 +48,26 @@ class Rectangle:
 
     def area(self):
         """returns the rectangle area"""
-        return (self.__width * self.__height)
+        return self.__width * self.__height
 
     def perimeter(self):
         """returns the rectangle perimeter"""
         if self.__width == 0 or self.__height == 0:
-            return (0)
-        return (2 * (self.__width + self.__height))
+            return 0
+        return 2 * (self.__width + self.__height)
 
     def __str__(self):
         """informal string representation"""
         if self.__width == 0 or self.__height == 0:
-            return ("")
+            return ""
         str_rep = ""
         for i in range(self.__height):
             str_rep += (str(self.print_symbol) * self.__width) + "\n"
-        str_rep = str_rep[:-1]
-        return (str_rep)
+        return str_rep[:-1]
 
     def __repr__(self):
         """formal string representation"""
-        return (f"Rectangle({self.__width}, {self.__height})")
+        return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
         """destructor"""
@@ -83,11 +82,11 @@ class Rectangle:
         if type(rect_2) is not Rectangle:
             raise TypeError("rect_2 must be an instance of Rectangle")
         if rect_1.area() >= rect_2.area():
-            return (rect_1)
+            return rect_1
         else:
-            return (rect_2)
+            return rect_2
 
     @classmethod
     def square(cls, size=0):
-        """square - return a new rectangle with equal size"""
+        """square - a new rectangle with equal size"""
         return cls(size, size)
