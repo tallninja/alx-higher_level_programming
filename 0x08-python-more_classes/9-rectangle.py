@@ -13,6 +13,7 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """constructor"""
+        
         self.height = height
         self.width = width
         Rectangle.number_of_instances += 1
