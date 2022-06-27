@@ -52,6 +52,8 @@ class Rectangle:
 
     def __str__(self):
         """informal string representation of an object"""
+        if self.__width == 0 or self.__height == 0:
+            return ("")
         str_rep = ""
         for i in range(self.__height):
             str_rep += ("#" * self.__width)
