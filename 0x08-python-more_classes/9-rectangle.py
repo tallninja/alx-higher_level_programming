@@ -14,7 +14,7 @@ class Rectangle:
         """constructor"""
         self.height = height
         self.width = width
-        type(self).number_of_instances += 1
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -57,6 +57,7 @@ class Rectangle:
         return (2 * (self.__width + self.__height))
 
     def __str__(self):
+        """informal string representation"""
         if self.__width == 0 or self.__height == 0:
             return ("")
         str_rep = ""
@@ -67,12 +68,13 @@ class Rectangle:
         return (str_rep)
 
     def __repr__(self):
+        """formal string representation"""
         return (f"Rectangle({self.__width}, {self.__height})")
 
     def __del__(self):
         """destructor"""
         print("Bye rectangle...")
-        type(self).number_of_instances -= 1
+        Rectangle.number_of_instances -= 1
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
