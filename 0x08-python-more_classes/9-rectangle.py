@@ -1,36 +1,20 @@
 #!/usr/bin/python3
-"""Rectangle - defines a rectangle"""
+
+"""
+class Rectangle defines a rectangle
+"""
 
 
-class Rectangle():
-    """Rectangle - defines a rectangle"""
-
+class Rectangle:
+    """defines a rectangle"""
     number_of_instances = 0
     print_symbol = "#"
 
     def __init__(self, width=0, height=0):
-        """The _init_ method defines the properties of Rectangle"""
-        self.width = width
+        """constructor"""
         self.height = height
+        self.width = width
         Rectangle.number_of_instances += 1
-
-    def __str__(self):
-        """The _str_ method print a Rectangle with #"""
-        acum = ""
-        if (self.width * self.height > 0):
-            for x in range(self.height):
-                acum += (str(self.print_symbol) * self.width) + "\n"
-            acum = acum[:-1]
-        return acum
-
-    def __repr__(self):
-        """The _repr_ method return a string of Rectangle instance"""
-        return "Rectangle({}, {})".format(self.width, self.height)
-
-    def __del__(self):
-        """The _del_ method print a message when an instance is deleted"""
-        print("Bye rectangle...")
-        Rectangle.number_of_instances -= 1
 
     @property
     def width(self):
@@ -72,6 +56,22 @@ class Rectangle():
             return 0
         return 2 * (self.width + self.height)
 
+    def __str__(self):
+        acum = ""
+        if (self.width * self.height > 0):
+            for x in range(self.height):
+                acum += (str(self.print_symbol) * self.width) + "\n"
+            acum = acum[:-1]
+        return acum
+
+    def __repr__(self):
+        return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """destructor"""
+        print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
+
     def bigger_or_equal(rect_1, rect_2):
         """bigger_or_equal - return bigger rectangle"""
         if not isinstance(rect_1, Rectangle):
@@ -87,4 +87,3 @@ class Rectangle():
     def square(cls, size=0):
         """square - return a new rectangle with equal size"""
         return cls(size, size)
-        
