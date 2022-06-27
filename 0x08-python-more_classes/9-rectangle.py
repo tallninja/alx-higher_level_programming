@@ -87,3 +87,4 @@ class Rectangle():
     def square(cls, size=0):
         """square - return a new rectangle with equal size"""
         return cls(size, size)
+        
