@@ -7,6 +7,7 @@ class Square - implements a square from a rectangle
 
 Rectangle = __import__("9-rectangle").Rectangle
 
+
 class Square(Rectangle):
     """implements a square from a rectangle"""
     
