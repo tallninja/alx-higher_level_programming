@@ -1,17 +1,53 @@
->>> MyList = __import__("1-my_list").MyList
+=============================
+The ``1-my_list`` module
+=============================
 
->>> my_list = MyList()
->>> my_list.append(1)
->>> my_list.append(4)
->>> my_list.append(2)
->>> my_list.append(3)
->>> my_list.append(5)
+Using ``MyList``
+---------------------
 
->>> print(my_list)
-[1, 4, 2, 3, 5]
+Import the class:
 
->>> my_list.print_sorted()
-[1, 2, 3, 4, 5]
+    >>> MyList = __import__('1-my_list').MyList
 
->>> print(my_list)
-[1, 4, 2, 3, 5]
+Now test it:
+
+    >>> my_list = MyList()
+
+    >>> my_list
+    []
+
+    >>> my_list.append(1)
+
+    >>> my_list.append(4)
+
+    >>> my_list.append(2)
+
+    >>> my_list
+    [1, 4, 2]
+
+    >>> my_list.print_sorted()
+    [1, 2, 4]
+
+    >>> my_list
+    [1, 4, 2]
+
+    >>> my_list = MyList([3, 6, 2])
+
+    >>> my_list
+    [3, 6, 2]
+
+    >>> my_list.print_sorted()
+    [2, 3, 6]
+
+    >>> my_list = MyList("hello")
+    
+    >>> my_list
+    ['h', 'e', 'l', 'l', 'o']
+
+    >>> my_list.print_sorted()
+    ['e', 'h', 'l', 'l', 'o']
+
+    >>> new_l = MyList()
+
+    >>> new_l.print_sorted()
+    []
