@@ -13,4 +13,3 @@ class MyList(list):
         """prints the list in ascending order"""
         copy = sorted(self[:])
         print(copy)
-
