@@ -84,3 +84,12 @@ class Rectangle(Base):
         """prints to stdout the layout of rectangle"""
         for i in range(self.__height):
             print("#" * self.__width)
+
+    def __str__(self):
+        """string representation of rectangle object"""
+        id = self.id
+        x = self.__x
+        y = self.__y
+        width = self.__width
+        height = self.__height
+        return f"[Rectangle] ({id}) {x}/{y} - {width}/{height}"
