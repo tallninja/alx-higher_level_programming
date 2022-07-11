@@ -27,8 +27,9 @@ class Base:
         """returns the JSON string representation of list_dictionaries"""
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
-        if (type(list_dictionaries) is not list or
-            not all(type(x) is dict for x in list_dictionaries)):
+        if type(list_dictionaries) is not list:
+            raise TypeError("list_dictionaries must be a list of dictionaries")
+        if not all(type(x) is dict for x in list_dictionaries):
             raise TypeError("list_dictionaries must be a list of dictionaries")
         return json.dumps(list_dictionaries)
 
@@ -62,7 +63,7 @@ class Base:
             dummy = cls(2)
         dummy.update(**dictionary)
         return dummy
-     
+
     @classmethod
     def load_from_file(cls):
         """returns a list of instances"""
