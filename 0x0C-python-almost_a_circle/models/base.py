@@ -34,7 +34,7 @@ class Base:
             raise TypeError("list_dictionaries must be a list of dictionaries")
         if not all(type(x) is dict for x in list_dictionaries):
             raise TypeError("list_dictionaries must be a list of dictionaries")
-        return json.dumps(list_dictionaries)
+        return json.dumps(str(list_dictionaries))
 
     @classmethod
     def save_to_file(cls, list_objs):
