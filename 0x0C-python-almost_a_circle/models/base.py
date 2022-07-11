@@ -2,6 +2,7 @@
 """
 models/base.py - Base
 """
+import os
 import json
 import csv
 
@@ -13,6 +14,8 @@ class Base:
 
     def __init__(self, id=None):
         """constructor"""
+        if id is not None and type(id) is not int:
+            raise TypeError("id must be an integer")
         if id is not None:
             self.id = id
         else:
@@ -22,6 +25,11 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """returns the JSON string representation of list_dictionaries"""
+        if list_dictionaries is None or list_dictionaries == []:
+            return "[]"
+        if (type(list_dictionaries) is not list or
+            not all(type(x) is dict for x in list_dictionaries)):
+            raise TypeError("list_dictionaries must be a list of dictionaries")
         return json.dumps(list_dictionaries)
 
     @classmethod
@@ -61,11 +69,12 @@ class Base:
         instances = []
         data = None
         filename = f"{cls.__name__}.json"
-        with open(filename, "r", encoding="utf-8") as f:
-            data = f.read()
-        dict_list = cls.from_json_string(data)
-        for item in dict_list:
-            instances.append(cls.create(**item))
+        if os.path.exists(filename):
+            with open(filename, "r", encoding="utf-8") as f:
+                data = f.read()
+            dict_list = cls.from_json_string(data)
+            for item in dict_list:
+                instances.append(cls.create(**item))
         return instances
 
     @classmethod
@@ -77,7 +86,7 @@ class Base:
             raise TypeError("list_objs must be a list of instances")
 
         filename = f"{cls.__name__}.csv"
-        with open(filename, 'w') as f:
+        with open(filename, 'w', encoding="utf-8") as f:
             if list_objs is not None:
                 list_objs = [x.to_dictionary() for x in list_objs]
                 if cls.__name__ == 'Rectangle':
@@ -87,3 +96,24 @@ class Base:
                 writer = csv.DictWriter(f, fieldnames=fields)
                 writer.writeheader()
                 writer.writerows(list_objs)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes CSV format from a file"""
+        filename = f"{cls.__name__}.csv"
+        obj_list = []
+        if os.path.exists(filename):
+            with open(filename, 'r', encoding="utf-8") as f:
+                reader = csv.reader(f, delimiter=',')
+                if cls.__name__ == 'Rectangle':
+                    fields = ['id', 'width', 'height', 'x', 'y']
+                elif cls.__name__ == 'Square':
+                    fields = ['id', 'size', 'x', 'y']
+                for x, row in enumerate(reader):
+                    if x > 0:
+                        i = cls(1, 1)
+                        for j, e in enumerate(row):
+                            if e:
+                                setattr(i, fields[j], int(e))
+                        obj_list.append(i)
+        return obj_list
