@@ -8,10 +8,10 @@ from models.rectangle import Rectangle
 class Square(Rectangle):
     """defines a square from a rectangle"""
 
-    def __init__(self, size, x=0, y=0):
+    def __init__(self, size, x=0, y=0, id=None):
         """constructor"""
         self.size = size
-        super().__init__(width=size, height=size, x=x, y=y)
+        super().__init__(width=size, height=size, x=x, y=y, id)
 
     @property
     def size(self):
