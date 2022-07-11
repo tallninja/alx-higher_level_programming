@@ -5,6 +5,9 @@ models/base.py - Base
 import os
 import json
 import csv
+import turtle
+import time
+from random import randrange
 
 
 class Base:
@@ -118,3 +121,35 @@ class Base:
                                 setattr(i, fields[j], int(e))
                         obj_list.append(i)
         return obj_list
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Opens a Turtle window and draws rectangles and squares"""
+        t = turtle.Turtle()
+        t.color("beige")
+        turtle.bgcolor("white")
+        t.shape("circle")
+        t.pensize(4)
+
+        for i in (list_rectangles + list_squares):
+            t.penup()
+            t.setpos(0, 0)
+            turtle.Screen().colormode(255)
+            t.pencolor((randrange(255), randrange(255), randrange(255)))
+            Base.draw_rect(t, i)
+            time.sleep(1)
+        time.sleep(5)
+
+    @staticmethod
+    def draw_rect(t, rect):
+        """Helper method that draws a Rectangleor Square"""
+        t.penup()
+        t.setpos(rect.x, rect.y)
+        t.pendown()
+        t.forward(rect.width)
+        t.left(90)
+        t.forward(rect.height)
+        t.left(90)
+        t.forward(rect.width)
+        t.left(90)
+        t.forward(rect.height)
